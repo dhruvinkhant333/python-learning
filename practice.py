@@ -1,9 +1,6 @@
+def count():
+    for i in range(1,6):
+        yield i
 
-import math
-
-x = input ("Enter a number: ")
-
-# fine the squeare root of the number : 
-y = math.sqrt(float(x))
-
-print(f"the square root of {x} is {y}")
+for num in count():
+    print(num)
