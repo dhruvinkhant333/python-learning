@@ -1,4 +1,4 @@
-sel#Create a class named MyClass, with a property named x:
+#Create a class named MyClass, with a property named x:
 class myclass:
     x = 5
 #Create an object named p1, and print the value of x:
