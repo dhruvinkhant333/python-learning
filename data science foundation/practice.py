@@ -59,4 +59,11 @@ print(one.argmax()) # (method which use : ())
 #                            mathematical operations                           #
 # ---------------------------------------------------------------------------- #
 myar2 = np.array([[1,3,5], [5,7,8], [3,4,6]])
+
+# it allow the mathematical operation between metrix which list can't do 
 print(myar + myar2)
+print(myar * myar2) 
+
+print(np.sqrt(myar))   # find sqrt of each element 
+
+print(np.where(myar > 5))  # return array tuple which show us element location which setisfy the condition
