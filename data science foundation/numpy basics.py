@@ -395,7 +395,7 @@ print("Subjects (columns, in order):", subjects)
 print("First 5 students' scores:\n", scores[:5])
 
 # --- Extract a specific student's scores (e.g. student index 42) ---
-student_42_scores = scores[42, :]
+student_42_scores = scores[42, :]f
 print("\nStudent #42 scores (all 5 subjects):", student_42_scores)
 
 # --- Get all Math scores (column 0) ---
