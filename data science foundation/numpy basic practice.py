@@ -96,6 +96,9 @@ train_features = training_data[:,2:5]
 print(train_features.shape)
 print(train_features)
 
+
+
+
 # Create a (100, 5) student score matrix. Compute each student's average, identify the top 10 students, and list those whose Math score is above 90 and whose average score exceeds 80.
 student_score = np.random.randint(1,101,(100,5))
 student_score_average = student_score.mean(axis=1)
