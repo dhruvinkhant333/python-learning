@@ -181,6 +181,7 @@ print("PART 5: SLICING (2D & 3D ARRAYS)")
 print("=" * 80)
 
 # The 2D array we'll reuse throughout this section
+
 matrix = np.array([
     [1,  2,  3,  4],
     [5,  6,  7,  8],
@@ -207,7 +208,7 @@ print("cube[:, 0, :]  (1st row from EVERY layer):\n", cube[:, 0, :])
 print("\n" + "=" * 80)
 print("PART 6: BOOLEAN INDEXING (critical for data filtering!)")
 print("=" * 80)
-
+import numpy as np
 bool_arr = np.array([3, 8, 1, 12, 5, 20, 7, 15])
 print("\nBase array:", bool_arr)
 
@@ -395,7 +396,7 @@ print("Subjects (columns, in order):", subjects)
 print("First 5 students' scores:\n", scores[:5])
 
 # --- Extract a specific student's scores (e.g. student index 42) ---
-student_42_scores = scores[42, :]f
+student_42_scores = scores[42, :]
 print("\nStudent #42 scores (all 5 subjects):", student_42_scores)
 
 # --- Get all Math scores (column 0) ---
