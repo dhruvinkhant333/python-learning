@@ -67,3 +67,11 @@ print(myar * myar2)
 print(np.sqrt(myar))   # find sqrt of each element 
 
 print(np.where(myar > 5))  # return array tuple which show us element location which setisfy the condition
+
+data = np.array([
+    [2, 4, 6],
+    [8,10,12],
+    [14,16,18]
+])
+print(data.mean(axis=0, keepdims=True))
+print(data - data.mean(axis=0, keepdims=True))
