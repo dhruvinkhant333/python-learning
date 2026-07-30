@@ -228,7 +228,7 @@ print("Running total after +20:", acc(20))
 # remembered variables -- they do not share state with each other.
 acc_a = running_total()
 acc_b = running_total()
-acc_a(100)
+print(acc_a(100))
 acc_a(50)
 acc_b(1)
 print("\nacc_a total:", acc_a(0), "| acc_b total:", acc_b(0), "-- completely independent")
