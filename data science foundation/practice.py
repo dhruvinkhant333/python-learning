@@ -1,77 +1,163 @@
 import numpy as np 
 
-myarr = np.array([[3,4,6,7]] ,np.int8 )
+print("\n" + "=" * 80)
+print("1. RESHAPING - Change Array Dimensions")
+print("=" * 80)
 
-print(myarr)
-print(myarr[0,1])
-print(myarr.shape)
-print(myarr.dtype)
-myarr[0,1] = 9
-print(myarr[0,1])
+print("""
+RESHAPING CONCEPTS:
+- Change dimensions WITHOUT changing data
+- Original data order preserved (C-order)
+- Important: Total elements must stay the same!
+  Example: (6,) can reshape to (2,3), (3,2), (1,6), (6,1)
+  But NOT (2,4) - wrong size!
+""")
 
-#convertion from other python structure : 
-listarray = np.array([[1,2,3], [4,5,6], [8,9,0]])
-print(listarray.dtype)
-print(listarray.shape)
+# ===== np.reshape() =====
+print("\n--- np.reshape(arr, shape) ---")
+arr_1d = np.array([1, 2, 3, 4, 5, 6])
+print(f"Original 1D array: {arr_1d}")
+print(f"Shape: {arr_1d.shape}")
 
-#for zero array list
-print(np.zeros((1,5)))
+arr_2d = np.reshape(arr_1d, (2, 3))
+print(f"\nnp.reshape(arr_1d, (2, 3)):")
+print(arr_2d)
+print(f"Shape: {arr_2d.shape}")
+print("  ↳ 6 elements → (2 rows, 3 columns)")
 
-#use of arange function for creating array in numpy (arange function)
-print(np.arange(5)) 
+arr_3d = np.reshape(arr_1d, (1, 2, 3))
+print(f"\nnp.reshape(arr_1d, (1, 2, 3)):")
+print(arr_3d)
+print(f"Shape: {arr_3d.shape}")
+print("  ↳ 6 elements → (1 depth, 2 rows, 3 columns)")
 
-#some important function 
+# ===== .reshape() method (same operation, different syntax) =====
+print("\n--- .reshape() Method (In-place) ---")
+arr_reshaped = arr_1d.reshape(3, 2)
+print(f"arr_1d.reshape(3, 2):")
+print(arr_reshaped)
+print(f"Shape: {arr_reshaped.shape}")
+print("  ↳ Same result as np.reshape(), different syntax")
 
-# 1.reshape
-arr = np.arange(50)
+# ===== The -1 Parameter (IMPORTANT!) =====
+print("\n--- The -1 Parameter (Infer Dimension!) ---")
+arr = np.arange(24)  # [0, 1, 2, ..., 23]
+print(f"Original array: {arr}")
+print(f"Shape: {arr.shape}")
 
-print(arr.reshape(2,25)) # make sure all element get place to use reshape function
-print(arr.ravel()) # to convert this arry into 1d array
+# Reshape to (2, -1): NumPy calculates second dimension
+result = arr.reshape(2, -1)
+print(f"\narr.reshape(2, -1):")
+print(result)
+print(f"Result shape: {result.shape}")
+print("  ↳ NumPy calculates: 24 / 2 = 12, so shape is (2, 12)")
 
+# Reshape to (-1, 4): NumPy calculates first dimension
+result = arr.reshape(-1, 4)
+print(f"\narr.reshape(-1, 4):")
+print(result)
+print(f"Result shape: {result.shape}")
+print("  ↳ NumPy calculates: 24 / 4 = 6, so shape is (6, 4)")
 
-# ---------------------------------------------------------------------------- #
-#                                  Numpy axis                                  #
-# ---------------------------------------------------------------------------- #
+# Reshape to (-1,): Flatten to 1D
+result = arr.reshape(-1)
+print(f"\narr.reshape(-1):")
+print(result)
+print(f"Result shape: {result.shape}")
+print("  ↳ Flattens to 1D (equivalent to .flatten())")
 
+print("\nWHY -1 MATTERS FOR ML:")
+print("  When you have unknown batch size: reshape(-1, 784) for MNIST")
+print("  -1 automatically adapts to any batch size!")
 
-x = [[1,2,3], [4,5,6], [7,8,9]]
+# ===== np.flatten() - Convert to 1D =====
+print("\n--- np.flatten() - Convert to 1D ---")
+arr_2d = np.array([[1, 2, 3],
+                   [4, 5, 6]])
+print(f"Original 2D array:")
+print(arr_2d)
+print(f"Shape: {arr_2d.shape}")
 
-myar = np.array(x)
-print(myar)
+flattened = arr_2d.flatten()
+print(f"\narr_2d.flatten():")
+print(flattened)
+print(f"Shape: {flattened.shape}")
+print("  ↳ Always returns a COPY (not view!)")
 
-print(myar.sum(axis=0))
-print(myar.sum(axis=1))
-print(myar.T)  # convert array to its transpose 
+# ===== np.ravel() - Flatten (View vs Copy) =====
+print("\n--- np.ravel() - Flatten (View vs Copy) ---")
+arr_2d = np.array([[1, 2, 3],
+                   [4, 5, 6]])
+print(f"Original 2D array:")
+print(arr_2d)
 
-myar.flat    # (attribute) make itret that i can use into loops to process on each vlaues one by one 
-for item in myar.flat: 
-    print(item)
+raveled = arr_2d.ravel()
+print(f"\narr_2d.ravel():")
+print(raveled)
+print(f"  ↳ Returns a VIEW (not copy!) - more memory efficient")
 
+# Proof: modifying ravel output changes original
+raveled[0] = 999
+print(f"\nAfter raveled[0] = 999:")
+print(f"Original arr_2d (modified!):")
+print(arr_2d)
+print("  ↳ .ravel() is a view, so changes affect original!")
 
-one = np.array([1,2,3,4,5])
-print(one.argmax()) # (method which use : ())
-#argmax() : give max value index 
-#argmin() : give min value index
-#argshort() : give array index in that way which we can use to sort array
+# Restore and show flatten() difference
+arr_2d = np.array([[1, 2, 3], [4, 5, 6]])
+flattened = arr_2d.flatten()
+flattened[0] = 999
+print(f"\nAfter flattened[0] = 999 (using .flatten()):")
+print(f"Original arr_2d (NOT modified!):")
+print(arr_2d)
+print("  ↳ .flatten() is a copy, original stays unchanged")
 
+# ===== np.expand_dims() - Add Dimension =====
+print("\n--- np.expand_dims() - Add a Dimension ---")
+arr = np.array([1, 2, 3, 4, 5])
+print(f"Original shape: {arr.shape}")
+print(f"Original: {arr}")
 
-# ---------------------------------------------------------------------------- #
-#                            mathematical operations                           #
-# ---------------------------------------------------------------------------- #
-myar2 = np.array([[1,3,5], [5,7,8], [3,4,6]])
+# Add dimension at axis 0 (prepend)
+expanded = np.expand_dims(arr, axis=0)
+print(f"\nnp.expand_dims(arr, axis=0):")
+print(expanded)
+print(f"Shape: {expanded.shape}")
+print("  ↳ Added dimension at beginning: (5,) → (1, 5)")
 
-# it allow the mathematical operation between metrix which list can't do 
-print(myar + myar2)
-print(myar * myar2) 
+# Add dimension at axis 1 (append)
+expanded = np.expand_dims(arr, axis=1)
+print(f"\nnp.expand_dims(arr, axis=1):")
+print(expanded)
+print(f"Shape: {expanded.shape}")
+print("  ↳ Added dimension at end: (5,) → (5, 1)")
 
-print(np.sqrt(myar))   # find sqrt of each element 
+print("\nWHY THIS MATTERS:")
+print("  For broadcasting! (5,) + (5, 1) fails")
+print("  But (1, 5) + (5, 1) works via broadcasting!")
 
-print(np.where(myar > 5))  # return array tuple which show us element location which setisfy the condition
+# ===== np.squeeze() - Remove Dimensions =====
+print("\n--- np.squeeze() - Remove Dimensions ---")
+arr = np.array([[[1, 2, 3]]])
+print(f"Original shape: {arr.shape}")
+print(f"Original: {arr}")
 
-data = np.array([
-    [2, 4, 6],
-    [8,10,12],
-    [14,16,18]
-])
-print(data.mean(axis=0, keepdims=True))
-print(data - data.mean(axis=0, keepdims=True))
+squeezed = np.squeeze(arr)
+print(f"\nnp.squeeze(arr):")
+print(squeezed)
+print(f"Shape: {squeezed.shape}")
+print("  ↳ Removed all dimensions of size 1: (1, 1, 3) → (3,)")
+
+# Squeeze specific axis
+arr = np.array([[1, 2, 3]])
+print(f"\nOriginal: {arr}, shape: {arr.shape}")
+
+squeezed_axis0 = np.squeeze(arr, axis=0)
+print(f"np.squeeze(arr, axis=0): {squeezed_axis0}, shape: {squeezed_axis0.shape}")
+print("  ↳ Removed dimension at axis 0: (1, 3) → (3,)")
+
+try:
+    squeezed_axis1 = np.squeeze(arr, axis=1)
+except ValueError as e:
+    print(f"Cannot squeeze axis 1: {e}")
+    print("  ↳ Can only squeeze dimensions of size 1")

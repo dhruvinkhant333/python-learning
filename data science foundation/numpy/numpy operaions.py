@@ -364,7 +364,11 @@ x = np.linalg.solve(A, b)
 print(f"Solve Ax = b where A = {A.tolist()}, b = {b.tolist()}")
 print(f"x = {x}")
 verification = np.dot(A, x)
+
+print("b shape : " , np.shape(b))
+print("verification shape : " , np.shape(verification))
 print(f"Verification: A × x = {verification} (should equal b)")
+print("AX is equal to B or not :" , verification == b)
 
 # =============================================================================
 # 7. PRACTICAL ML EXAMPLES
@@ -490,6 +494,7 @@ print("\n" + "=" * 80)
 print("9. PRACTICE EXERCISES WITH SOLUTIONS")
 print("=" * 80)
 
+import numpy as np
 print("\n--- Exercise 1: Element-wise Operations ---")
 a = np.array([2, 4, 6])
 b = np.array([1, 2, 3])
@@ -503,6 +508,7 @@ X = np.random.rand(5, 3)  # 5 samples, 3 features
 print(f"X shape: {X.shape}")
 # Problem: Subtract column means
 col_means = X.mean(axis=0)
+print(f"col_means : {col_means}")
 print(f"col_means shape: {col_means.shape}")
 X_centered = X - col_means  # Broadcasting fixes shape mismatch!
 print(f"X_centered shape: {X_centered.shape}")
