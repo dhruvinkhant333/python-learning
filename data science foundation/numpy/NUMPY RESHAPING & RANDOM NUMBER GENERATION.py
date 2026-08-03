@@ -327,24 +327,26 @@ print("\n" + "=" * 80)
 print("3. RANDOM NUMBER GENERATION - Initialize & Simulate Data")
 print("=" * 80)
 
-# RANDOM NUMBERS
+print("""
+RANDOM NUMBERS
 
-# ├── Generate Random Numbers
-# │      │
-# │      ├── Floats
-# │      │      ├── rand()
-# │      │      ├── randn()
-# │      │      ├── uniform()
-# │      │      └── normal()
-# │      │
-# │      └── Integers
-# │             ├── randint()
-# │             └── choice()
-# │
-# └── Rearrange Existing Data
-#        ├── shuffle()
-#        └── permutation()
-
+├── Fix randomness
+│      seed()
+│
+├── Generate FLOATS
+│      rand()      → 0 to 1
+│      randn()     → Normal (0,1)
+│      uniform()   → Custom range
+│      normal()    → Custom mean/std
+│
+├── Generate INTEGERS
+│      randint()
+│      choice()
+│
+└── Rearrange
+       shuffle()      → Changes original
+       permutation()  → Returns new copy
+""")
 
 print("""
 RANDOM FUNCTIONS OVERVIEW:
