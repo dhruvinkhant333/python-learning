@@ -5,6 +5,8 @@
 from sklearn import datasets 
 from pprint import pprint
 
+pprint([name for name in dir(datasets) ])
+
 iris = datasets.load_iris()
 pprint(iris)
 print(iris.keys())
@@ -15,8 +17,8 @@ print(iris.data[:10])
 print(iris.target[:5])
 
 #print columns names that represent the feature names : 
-print(iris.feature_names)
-
+print(iris.feature_names)                                                                   
+    
 #print targets (iris varienties : ) :
 print(iris.target_names)
 
