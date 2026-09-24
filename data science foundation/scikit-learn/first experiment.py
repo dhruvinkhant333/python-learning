@@ -2,11 +2,10 @@
 # measurements for three varieties of iris flowers.
 
 from sklearn import datasets
-from pprint import pprint
 
 iris = datasets.load_iris()
-pprint(iris)
-print(iris.keys())
+print(f"Dataset keys: {iris.keys()}")
+print(f"Samples: {iris.data.shape[0]}, features: {iris.data.shape[1]}")
 
 # Print the first ten feature rows and the first five labels.
 print(iris.data[:10])
