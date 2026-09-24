@@ -131,7 +131,7 @@ scaler = StandardScaler()
 scaler.fit(df[['Age']])
 
 # Transform 
-df['Age'] = scaler.transform(df['Age'])
+df['Age'] = scaler.transform(df[['Age']])
 
 print(df)
 
