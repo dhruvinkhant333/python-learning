@@ -23,6 +23,9 @@ from sklearn import svm
 
 clf = svm.SVC(gamma = 0.001, C=100.)
 clf.fit(iris.data[:-1], iris.target[:-1])
-predictions = clf.predict(iris.data)
-print(f"Predicted labels: {predictions}")
-print(f"Predicted classes: {iris.target_names[predictions]}")
+test_features = iris.data[-1:]
+test_target = iris.target[-1:]
+prediction = clf.predict(test_features)
+print(f"Predicted label: {prediction[0]}")
+print(f"Predicted class: {iris.target_names[prediction[0]]}")
+print(f"Actual class: {iris.target_names[test_target[0]]}")
