@@ -4,7 +4,7 @@
 from sklearn import datasets
 
 iris = datasets.load_iris()
-print(f"Dataset keys: {iris.keys()}")
+print(f"Dataset keys: {list(iris.keys())}")
 print(f"Samples: {iris.data.shape[0]}, features: {iris.data.shape[1]}")
 
 # Print the first ten feature rows and the first five labels.
@@ -23,4 +23,6 @@ from sklearn import svm
 
 clf = svm.SVC(gamma = 0.001, C=100.)
 clf.fit(iris.data[:-1], iris.target[:-1])
-print(clf.predict(iris.data))
+predictions = clf.predict(iris.data)
+print(f"Predicted labels: {predictions}")
+print(f"Predicted classes: {iris.target_names[predictions]}")
