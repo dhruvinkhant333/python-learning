@@ -1,31 +1,24 @@
-# We will use a
-# simple dataset called iris dataset that contains the petal and sepal
-# length of three varieties of iris lowers 
+# We will use the simple Iris dataset, which contains sepal and petal
+# measurements for three varieties of iris flowers.
 
-from sklearn import datasets 
+from sklearn import datasets
 from pprint import pprint
-
-pprint([name for name in dir(datasets) ])
 
 iris = datasets.load_iris()
 pprint(iris)
 print(iris.keys())
 
-# print irst ive items from the iris dataset, followed by
-# their labels, or the targets as follows
+# Print the first ten feature rows and the first five labels.
 print(iris.data[:10])
 print(iris.target[:5])
 
-#print columns names that represent the feature names : 
-print(iris.feature_names)                                                                   
-    
-#print targets (iris varienties : ) :
+# Print the feature and target names.
+print(iris.feature_names)
 print(iris.target_names)
 
-# As the irst ive elements that we printed have target as 0, they
-# belong to the type setosa, which is the smallest lower in the dataset.
+# The first five examples have target 0, so they belong to the setosa class.
 
-# We will now create an estimator with an algorithm called Support Vector Machines (SVM) Classiier that we will study in detail in a dedicated chapter. To initialize and learn the parameters, use the following lines of code
+# Create a Support Vector Machine classifier and fit it to the examples.
 
 from sklearn import svm
 
