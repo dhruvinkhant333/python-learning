@@ -207,3 +207,15 @@ plt.title('Class test score spread')
 plt.ylabel('Test score')
 plt.grid(axis='y', alpha=0.3)
 plt.show()
+
+
+# ------------------------------- Area practice ----------------------------- #
+days = np.arange(1, 8)
+daily_reading = [10, 15, 13, 18, 22, 20, 25]
+plt.fill_between(days, daily_reading, color='lightseagreen', alpha=0.6)
+plt.plot(days, daily_reading, color='teal', marker='o')
+plt.title('Daily reading time')
+plt.xlabel('Day')
+plt.ylabel('Minutes')
+plt.grid(True, alpha=0.3)
+plt.show()
