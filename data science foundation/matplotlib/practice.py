@@ -168,3 +168,13 @@ plt.show()
 # We can have horizontal stacked bars as follows:
 df2.plot.barh(stacked = True)
 plt.show()
+
+
+# ----------------------------- Histogram practice -------------------------- #
+scores = [62, 68, 71, 74, 78, 81, 83, 87, 90, 95]
+plt.hist(scores, bins=5, color='steelblue', edgecolor='black')
+plt.title('Score distribution')
+plt.xlabel('Score')
+plt.ylabel('Number of students')
+plt.grid(axis='y', alpha=0.3)
+plt.show()
