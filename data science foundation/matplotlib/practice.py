@@ -189,3 +189,12 @@ plt.xlabel('Study hours')
 plt.ylabel('Test score')
 plt.grid(True, alpha=0.3)
 plt.show()
+
+
+# -------------------------------- Pie practice ----------------------------- #
+labels = ['Python', 'Matplotlib', 'Pandas']
+time_spent = [5, 3, 2]
+plt.pie(time_spent, labels=labels, autopct='%1.1f%%', startangle=90)
+plt.title('Study time by topic')
+plt.axis('equal')
+plt.show()
