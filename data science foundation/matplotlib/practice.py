@@ -198,3 +198,12 @@ plt.pie(time_spent, labels=labels, autopct='%1.1f%%', startangle=90)
 plt.title('Study time by topic')
 plt.axis('equal')
 plt.show()
+
+
+# ------------------------------- Box plot practice ------------------------- #
+class_scores = [58, 64, 67, 70, 72, 75, 77, 80, 84, 96]
+plt.boxplot(class_scores)
+plt.title('Class test score spread')
+plt.ylabel('Test score')
+plt.grid(axis='y', alpha=0.3)
+plt.show()
