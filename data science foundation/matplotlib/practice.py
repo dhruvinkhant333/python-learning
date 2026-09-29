@@ -178,3 +178,14 @@ plt.xlabel('Score')
 plt.ylabel('Number of students')
 plt.grid(axis='y', alpha=0.3)
 plt.show()
+
+
+# ------------------------------ Scatter practice -------------------------- #
+study_hours = np.arange(1, 8)
+test_scores = [55, 62, 68, 70, 78, 85, 91]
+plt.scatter(study_hours, test_scores, color='teal')
+plt.title('Study hours and test scores')
+plt.xlabel('Study hours')
+plt.ylabel('Test score')
+plt.grid(True, alpha=0.3)
+plt.show()
